@@ -1,0 +1,35 @@
+{
+  "payment-service": {
+    "service": "payment-service",
+    "team": "Payments",
+    "past_incidents": [
+      {
+        "date": "2025-01-15",
+        "symptom": "Payment API timeout, 500 errors spiked to 40%",
+        "root_cause": "Redis connection pool exhausted during peak traffic",
+        "fix": "Increased Redis connection pool from 50 to 200",
+        "resolved_in_minutes": 23
+      },
+      {
+        "date": "2025-02-20",
+        "symptom": "Duplicate charges reported by 12 customers",
+        "root_cause": "Race condition in idempotency key handling",
+        "fix": "Added distributed lock using Redis SETNX",
+        "resolved_in_minutes": 45
+      }
+    ]
+  },
+  "auth-service": {
+    "service": "auth-service",
+    "team": "Identity",
+    "past_incidents": [
+      {
+        "date": "2025-03-10",
+        "symptom": "Login failures spiked, users couldn't authenticate",
+        "root_cause": "JWT signing key rotation failed silently",
+        "fix": "Rolled back key rotation, added monitoring alert for key mismatch",
+        "resolved_in_minutes": 18
+      }
+    ]
+  }
+}
